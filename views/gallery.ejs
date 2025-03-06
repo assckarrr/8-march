@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Beautiful Moments</h1>
+    <div class="gallery">
+        <div class="image-container" data-caption="Our morning summer date ❤️">
+            <img src="/images/photo_2025-03-02 01.05.16.jpeg" alt="Moment 1" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="Our graduation from high school together 🌿">
+            <img src="/images/photo_2025-03-02 01.05.21.jpeg" alt="Moment 2" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="Our fourth anniversary 🎓💖">
+            <img src="/images/photo_2025-03-02 01.05.25.jpeg" alt="Moment 3" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="Our first date in Astana ❄️🥰">
+            <img src="/images/photo_2025-03-02 01.05.29.jpeg" alt="Moment 4" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="Kisses for my queen 😘">
+            <img src="/images/photo_2025-03-02 01.05.33.jpeg" alt="Moment 5" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="Our first adventure to the gym side by side 💪🔥">
+            <img src="/images/photo_2025-03-02 01.05.40.jpeg" alt="Moment 6" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="This is us at Hanzo 🍣">
+            <img src="/images/moment7.jpeg" alt="Moment 7" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="This is us at my place 🏡">
+            <img src="/images/moment8.jpeg" alt="Moment 8" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="This is us at your place 🏡">
+            <img src="/images/moment9.jpeg" alt="Moment 9" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="This is us at FixPrice 🛒">
+            <img src="/images/moment10.jpeg" alt="Moment 10" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="This is us at the mall 🛍️">
+            <img src="/images/moment11.jpeg" alt="Moment 11" onclick="openLightbox(this)" />
+        </div>
+        <div class="image-container" data-caption="Our loving kisses 😘">
+            <img src="/images/moment12.jpeg" alt="Moment 12" onclick="openLightbox(this)" />
+        </div>
+
+    </div>
+    
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+        <p id="lightbox-caption"></p>
+    </div>
+    
+
+    
+    
+    
+    <nav>
+        <a href="/">Home</a>
+        <a href="/letter">Love Letter</a>
+        <a href="/surprise">Surprise</a>
+        <a href="/contact">Mini-Game</a>
+
+    </nav>
+
+    <script>
+        function openLightbox(img) {
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const lightboxCaption = document.getElementById("lightbox-caption");
+    
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.parentElement.getAttribute("data-caption");
+            lightbox.classList.add("active");
+        }
+    
+        function closeLightbox() {
+            document.getElementById("lightbox").classList.remove("active");
+        }
+    </script>
+    
+</body>
+</html>

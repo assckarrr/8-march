@@ -1,0 +1,336 @@
+body {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 6rem; /* Bigger text */
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-family: 'Dancing Script', 'Great Vibes', cursive; /* Beautiful Font */
+    text-shadow: 4px 4px 12px rgba(255, 105, 180, 0.8); /* Soft glow effect */
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+
+
+
+    .main-container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh; /* Push everything to center vertically */
+    }
+    
+
+
+/* Navigation buttons */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background: #ff4d6d;
+    color: white;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background: #ff3366;
+    transform: scale(1.1);
+}
+
+
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1; /* Ensure images are properly stacked */
+}
+
+.image-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.1);
+}
+
+.image-container::after {
+    content: attr(data-caption);
+    position: absolute;
+    bottom: 0; /* Align caption at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 0 0 15px 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    white-space: normal; /* Allow text wrapping */
+    width: 100%; /* Make sure it fits the image width */
+    text-align: center; /* Keep text centered */
+    line-height: 1.4;
+    min-height: 50px; /* Ensures enough space */
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.image-container:hover::after {
+    opacity: 1;
+    
+}
+
+
+/* Lightbox styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.lightbox p {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Show lightbox when active */
+.lightbox.active {
+    display: flex;
+}
+
+
+.letter-container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 1.3rem;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(255, 182, 193, 0.5); /* Soft pink glow */
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.surprise-image {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.show-image {
+    opacity: 1;
+}
+
+/* Floating Hearts Animation with Glow */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        text-shadow: 0 0 5px #ff4d6d, 0 0 10px #ff99a3;
+    }
+    100% {
+        transform: translateY(-200px) scale(1.5);
+        opacity: 0;
+        text-shadow: 0 0 15px #ff99a3, 0 0 30px #ff4d6d;
+    }
+}
+
+
+
+
+/* Floating Background Hearts */
+@keyframes floatHearts {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+.heart-bg {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 2rem;
+    opacity: 0;
+    animation: floatHearts 8s ease-in-out infinite;
+}
+
+footer {
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem; /* Adjust title for small screens */
+    }
+    nav {
+        flex-direction: column;
+    }
+    nav a {
+        width: 80%;
+        text-align: center;
+    }
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ff99cc, #ff4d6d); /* Old background */
+}
+
+
+/* Game Info */
+.game-info {
+    position: absolute;
+    top: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Timer */
+.timer {
+    position: absolute;
+    top: 40px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* Score */
+.score {
+    position: absolute;
+    top: 70px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* Falling Hearts */
+.heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    animation: fall 3s linear infinite;
+}
+
+/* Heart Falling Animation */
+@keyframes fall {
+    0% { 
+        top: -10%;
+        opacity: 1; /* Убедимся, что сердечки сразу видимы */
+    }
+    100% { 
+        top: 90%;
+        opacity: 1; /* Оставляем ту же прозрачность, чтобы не темнели */
+    }
+}
+
+
+/* Hand */
+.hand {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: auto;
+    transition: left 0.05s ease-out;
+}
+
+/* Restart Button */
+.game-button {
+    display: none;
+    position: absolute;
+    top: 20%; /* Move it down slightly */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.game-button:hover {
+    background: #ff3366;
+}
+
+

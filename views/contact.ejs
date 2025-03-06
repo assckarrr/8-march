@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Hearts Game ❤️</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-info">Move the hands to catch as many hearts as possible! ❤️</div>
+        <div class="timer">Time Left: <span id="timer">60</span>s</div>
+        <div class="score">Score: <span id="score">0</span></div>
+
+        <!-- Falling Hearts (added dynamically by JS) -->
+        <img src="/images/hands.png" class="hand" id="hand" alt="Hands">
+
+        <!-- Restart Game Button -->
+        <button id="restartGame" class="game-button">Restart Game</button>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/letter">Love Letter</a>
+        <a href="/surprise">Surprise</a>
+        <a href="/contact">Mini-Game</a>
+
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const gameContainer = document.querySelector(".game-container");
+            const hand = document.getElementById("hand");
+            const scoreElement = document.getElementById("score");
+            const timerElement = document.getElementById("timer");
+            const restartButton = document.getElementById("restartGame");
+
+            let score = 0;
+            let timeLeft = 60;
+            let gameInterval, heartInterval;
+
+            function createHeart() {
+                const heart = document.createElement("img");
+                heart.src = "/images/heart.png";
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * (window.innerWidth - 50) + "px";
+                heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+                gameContainer.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+
+            function startGame() {
+                score = 0;
+                timeLeft = 60;
+                scoreElement.textContent = score;
+                timerElement.textContent = timeLeft;
+                restartButton.style.display = "none";
+
+                gameInterval = setInterval(() => {
+                    timeLeft--;
+                    timerElement.textContent = timeLeft;
+                    if (timeLeft <= 0) {
+                        endGame();
+                    }
+                }, 1000);
+
+                heartInterval = setInterval(createHeart, 1000);
+            }
+
+            function endGame() {
+                clearInterval(gameInterval);
+                clearInterval(heartInterval);
+                restartButton.style.display = "block";
+            }
+
+            document.addEventListener("mousemove", (event) => {
+                requestAnimationFrame(() => {
+                    hand.style.left = event.clientX - 45 + "px";
+                });
+            });
+
+            document.addEventListener("keydown", (event) => {
+                let left = parseInt(window.getComputedStyle(hand).left);
+                if (event.key === "ArrowLeft" && left > 10) {
+                    hand.style.left = left - 30 + "px";
+                }
+                if (event.key === "ArrowRight" && left < window.innerWidth - 100) {
+                    hand.style.left = left + 30 + "px";
+                }
+            });
+
+            function checkCollision() {
+                document.querySelectorAll(".heart").forEach((heart) => {
+                    let heartRect = heart.getBoundingClientRect();
+                    let handRect = hand.getBoundingClientRect();
+
+                    if (
+                        heartRect.bottom >= handRect.top &&
+                        heartRect.left >= handRect.left &&
+                        heartRect.right <= handRect.right
+                    ) {
+                        heart.remove();
+                        score++;
+                        scoreElement.textContent = score;
+                    }
+                });
+            }
+
+            setInterval(checkCollision, 100);
+            restartButton.addEventListener("click", startGame);
+            startGame();
+        });
+    </script>
+</body>
+</html>

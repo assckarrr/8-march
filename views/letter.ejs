@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .letter-container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+            font-size: 1.2rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .typing-text {
+            display: inline-block;
+            white-space: pre-line;
+            border-right: 3px solid white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: white;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>For My Love 💖</h1>
+    <div class="letter-container">
+        <p class="typing-text" id="typing-text"></p>
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/surprise">Surprise</a>
+        <a href="/contact">Mini-Game</a>
+
+    </nav>
+
+    <script>
+        const text = "My dearest love, \n\nEvery moment with you is a precious memory. \nYou are the light that brightens my darkest days, the warmth that comforts my heart, and the reason behind my happiest smiles. \n\nYour kindness, your laughter, your love – they fill my world with colors I never knew existed. \nYou are my greatest adventure, my sweetest dream, and my forever home. \n\nOn this special day, I celebrate you, the incredible woman you are, the love of my life. \nHappy Women's Day, my queen! 💖\n\nI love you, forever and always.";
+
+        let index = 0;
+        const speed = 70; // Adjust typing speed (milliseconds per letter)
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("typing-text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, speed);
+            }
+        }
+        window.onload = () => {
+            setTimeout(typeEffect, 500); // Start typing effect after page loads
+        };
+    </script>
+</body>
+</html>

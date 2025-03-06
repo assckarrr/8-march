@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise! 🎁</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .surprise-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .hidden-content {
+            display: none;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hidden-message {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .surprise-image {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .reveal-btn {
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .reveal-btn:hover {
+            background: #ff1493;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎁 A Special Surprise for You! 💖</h1>
+    
+    <div class="surprise-container">
+        <button class="reveal-btn" onclick="showSurprise()">Click Here for Your Surprise! 🎀</button>
+
+        <div id="hidden-content" class="hidden-content">
+            <p class="hidden-message">
+                You are the most precious person in my life. 💕  
+                No words can express how much I love you!  
+                Every day with you is a gift, and I will cherish you forever. 💖 (Киса все на англ потому что так красивее)  
+            </p>
+            <img id="surprise-image" class="surprise-image" src="/images/surprise-image.jpeg" alt="Our Love">
+
+        </div>
+
+        <!-- Audio Player (Hidden) -->
+        <audio id="love-song" src="/music/love-song.mp3"></audio>
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/letter">Love Letter</a>
+        <a href="/contact">Mini-Game</a>
+
+    </nav>
+
+    <script>
+        function showSurprise() {
+            document.getElementById("hidden-content").style.display = "block";
+            document.getElementById("love-song").play(); // Play music
+            document.getElementById("surprise-image").classList.add("show-image"); // Fade in image
+        }
+    </script>
+    
+    <script>
+        function showSurprise() {
+            document.getElementById("hidden-content").style.display = "block";
+            document.getElementById("love-song").play(); // Play music
+            document.getElementById("surprise-image").classList.add("show-image"); // Fade-in image
+            
+            // Start Floating Hearts Animation
+            createFloatingHearts();
+        }
+    
+        function createFloatingHearts() {
+            const container = document.querySelector(".surprise-container");
+    
+            for (let i = 0; i < 15; i++) { // Generate 15 hearts
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${2 + Math.random() * 3}s`; // Random float speed
+                container.appendChild(heart);
+    
+                setTimeout(() => {
+                    heart.remove(); // Remove heart after animation
+                }, 3000);
+            }
+        }
+    </script>
+    
+
+</body>
+</html>

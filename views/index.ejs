@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Wrap everything inside main-container for centering -->
+    <div class="main-container">
+        <h1>Happy Women's Day, My Love! 💖</h1>
+        
+        
+
+        <blockquote class="quote">
+            "You are the light in my life, the love in my heart, and the smile on my face. Happy Women's Day! 💖"
+        </blockquote>
+        
+
+        <nav>
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/gallery"><i class="fas fa-images"></i> Gallery</a>
+            <a href="/letter"><i class="fas fa-heart"></i> Love Letter</a>
+            <a href="/surprise"><i class="fas fa-gift"></i> Surprise</a>
+            <a href="/contact"><i class="fas fa-envelope"></i> Mini-Game</a>
+        </nav>
+        
+        <!-- Font Awesome for icons -->
+        <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-KIT.js" crossorigin="anonymous"></script>
+        
+    </div>
+
+    <script>
+        function createFloatingHearts() {
+            const container = document.body;
+    
+            for (let i = 0; i < 10; i++) { // 10 hearts floating
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart-bg");
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${5 + Math.random() * 5}s`; // Random float speed
+                container.appendChild(heart);
+    
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }
+        }
+    
+        setInterval(createFloatingHearts, 3000); // Keep hearts floating every few seconds
+    </script>
+
+<footer>
+    <p>Made with ❤️ for my little Princess | Happy Women's Day </p>
+</footer>
+
+    
+</body>
+</html>
