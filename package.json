@@ -1,7 +1,17 @@
 {
+  "name": "8-march",
+  "version": "1.0.0",
+  "description": "A beautiful web app for Women's Day",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "slick-carousel": "^1.8.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
